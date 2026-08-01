@@ -1,0 +1,278 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+@import './variables.css';
+@import './custom-bootstrap.css';
+
+.skip-link {
+  position: absolute;
+  top: -999px;
+  left: 1rem;
+  background-color: var(--primary-700);
+  color: #ffffff;
+  padding: 0.75rem 1.25rem;
+  z-index: 99999;
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  box-shadow: var(--shadow-lg);
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.shrink-0 {
+  flex-shrink: 0;
+}
+
+.grow {
+  flex-grow: 1;
+}
+
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f8fafc;
+}
+
+.app-sidebar {
+  width: 270px;
+  background-color: #ffffff;
+  border-right: 1px solid var(--neutral-200);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  z-index: 1020;
+}
+
+.sidebar-brand {
+  padding: 1.5rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-bottom: 1px solid var(--neutral-200);
+}
+
+.brand-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--primary-600), var(--primary-800));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.25rem;
+}
+
+.sidebar-nav {
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.nav-item-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  color: var(--neutral-600);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.nav-item-btn:hover {
+  background-color: var(--neutral-100);
+  color: var(--neutral-900);
+}
+
+.nav-item-btn.active {
+  background-color: var(--primary-50);
+  color: var(--primary-700);
+  font-weight: 700;
+}
+
+.nav-item-btn.active .nav-icon {
+  color: var(--primary-600);
+}
+
+.sidebar-footer {
+  padding: 1.25rem;
+  border-top: 1px solid var(--neutral-200);
+  background-color: var(--neutral-50);
+}
+
+.app-main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.app-header {
+  height: 70px;
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--neutral-200);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1010;
+}
+
+.app-content {
+  padding: 2rem;
+  flex-grow: 1;
+}
+
+.stat-card {
+  position: relative;
+  overflow: hidden;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--neutral-200);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.stat-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.agenda-time-column {
+  width: 75px;
+  flex-shrink: 0;
+  text-align: right;
+  padding-right: 0.75rem;
+  color: var(--neutral-500);
+  font-weight: 600;
+  font-size: 0.8125rem;
+}
+
+.agenda-slot-row {
+  min-height: 72px;
+  border-bottom: 1px dashed var(--neutral-200);
+  display: flex;
+  position: relative;
+}
+
+.agenda-slot-cell {
+  flex: 1;
+  padding: 0.25rem 0.5rem;
+  border-left: 1px solid var(--neutral-200);
+  position: relative;
+  min-height: 72px;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.agenda-slot-cell:hover {
+  background-color: hsla(204, 100%, 97%, 0.6);
+}
+
+.appointment-badge-card {
+  border-radius: var(--radius-md);
+  padding: 0.5rem 0.75rem;
+  box-shadow: var(--shadow-xs);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border-left: 4px solid var(--primary-600);
+  margin-bottom: 0.25rem;
+}
+
+.appointment-badge-card:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+  filter: brightness(0.97);
+}
+
+.blocked-time-card {
+  background-color: var(--neutral-100);
+  border: 1px dashed var(--neutral-400);
+  border-left: 4px solid var(--neutral-500);
+  border-radius: var(--radius-md);
+  padding: 0.5rem 0.75rem;
+  color: var(--neutral-600);
+  font-style: italic;
+  font-size: 0.8125rem;
+}
+
+.toast-floating-container {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 999999;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 420px;
+  width: calc(100vw - 3rem);
+  pointer-events: none;
+}
+
+.custom-toast {
+  pointer-events: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  animation: slideInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 991.98px) {
+  .app-sidebar {
+    display: none;
+  }
+  .app-header {
+    padding: 0 1rem;
+  }
+  .app-content {
+    padding: 1.25rem 1rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .btn-responsive-text {
+    display: none;
+  }
+}
