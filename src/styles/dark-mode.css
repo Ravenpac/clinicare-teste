@@ -1,0 +1,155 @@
+[data-bs-theme='dark'] {
+  color-scheme: dark;
+
+  --app-bg: #313338;
+  --surface: #383a40;
+  --input-bg: #1e1f22;
+  --sidebar-bg: #2b2d31;
+
+  --primary-50: hsl(230, 20%, 24%);
+  --primary-100: hsl(230, 22%, 29%);
+  --primary-200: hsl(230, 22%, 40%);
+
+  --neutral-50: #2b2d31;
+  --neutral-100: #383a40;
+  --neutral-200: #3f4147;
+  --neutral-300: #4e5058;
+  --neutral-400: #62666d;
+  --neutral-500: #80848e;
+  --neutral-600: #949ba4;
+  --neutral-700: #b5bac1;
+  --neutral-800: #dbdee1;
+  --neutral-900: #f2f3f5;
+
+  --success-50: hsl(145, 14%, 13%);
+  --success-100: hsl(145, 16%, 17%);
+  --success-text: hsl(145, 55%, 72%);
+
+  --warning-50: hsl(45, 14%, 13%);
+  --warning-100: hsl(45, 16%, 17%);
+  --warning-text: hsl(45, 62%, 74%);
+
+  --danger-50: hsl(0, 16%, 14%);
+  --danger-100: hsl(0, 18%, 18%);
+  --danger-text: hsl(4, 62%, 74%);
+
+  --info-50: hsl(210, 16%, 14%);
+  --info-100: hsl(210, 18%, 18%);
+
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.45);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.5), 0 1px 2px -1px rgba(0, 0, 0, 0.45);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.55), 0 2px 4px -2px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.6), 0 4px 6px -4px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.65), 0 8px 10px -6px rgba(0, 0, 0, 0.55);
+
+  --bs-body-bg: #313338;
+  --bs-body-bg-rgb: 49, 51, 56;
+  --bs-body-color: #dbdee1;
+  --bs-body-color-rgb: 219, 222, 225;
+  --bs-emphasis-color: #f2f3f5;
+  --bs-emphasis-color-rgb: 242, 243, 245;
+  --bs-secondary-color: rgba(219, 222, 225, 0.7);
+  --bs-secondary-color-rgb: 219, 222, 225;
+  --bs-secondary-bg: #383a40;
+  --bs-secondary-bg-rgb: 56, 58, 64;
+  --bs-tertiary-color: rgba(219, 222, 225, 0.55);
+  --bs-tertiary-color-rgb: 219, 222, 225;
+  --bs-tertiary-bg: #2b2d31;
+  --bs-tertiary-bg-rgb: 43, 45, 49;
+  --bs-border-color: #3f4147;
+  --bs-border-color-translucent: rgba(255, 255, 255, 0.08);
+  --bs-dark-rgb: 242, 243, 245;
+  --bs-light-rgb: 56, 58, 64;
+  --bs-dark-text-emphasis: #dbdee1;
+  --bs-light-bg-subtle: #2b2d31;
+  --bs-light-border-subtle: #4e5058;
+  --bs-light-text-emphasis: #f2f3f5;
+  --bs-primary-text-emphasis: #c7cdfb;
+  --bs-primary-bg-subtle: #323645;
+  --bs-primary-border-subtle: #50556e;
+  --bs-success-text-emphasis: #93dcb4;
+  --bs-success-bg-subtle: #1d3023;
+  --bs-success-border-subtle: #2e5b40;
+  --bs-warning-text-emphasis: #ecd394;
+  --bs-warning-bg-subtle: #302a1a;
+  --bs-warning-border-subtle: #5f5428;
+  --bs-danger-text-emphasis: #eaa8ac;
+  --bs-danger-bg-subtle: #2e1f20;
+  --bs-danger-border-subtle: #6e3438;
+  --bs-info-text-emphasis: #86c9dd;
+  --bs-info-bg-subtle: #1a2a30;
+  --bs-info-border-subtle: #2c5563;
+  --bs-link-color: #c7cdfb;
+  --bs-link-hover-color: #dfe1fd;
+  --bs-link-color-rgb: 199, 205, 251;
+  --bs-link-hover-color-rgb: 223, 225, 253;
+  --bs-form-valid-color: #93dcb4;
+  --bs-form-valid-border-color: #93dcb4;
+  --bs-form-invalid-color: #eaa8ac;
+  --bs-form-invalid-border-color: #eaa8ac;
+  --bs-modal-bg: var(--surface);
+}
+
+[data-bs-theme='dark'] body,
+[data-bs-theme='dark'] .app-container {
+  background-color: var(--app-bg);
+}
+
+[data-bs-theme='dark'] .app-sidebar {
+  background-color: var(--sidebar-bg);
+}
+
+[data-bs-theme='dark'] .app-header,
+[data-bs-theme='dark'] .card,
+[data-bs-theme='dark'] .stat-card,
+[data-bs-theme='dark'] .modal-header {
+  background-color: var(--surface);
+}
+
+[data-bs-theme='dark'] .form-control,
+[data-bs-theme='dark'] .form-select {
+  background-color: var(--input-bg);
+}
+
+[data-bs-theme='dark'] .bg-white {
+  background-color: var(--surface) !important;
+}
+
+[data-bs-theme='dark'] .nav-item-btn.active {
+  color: hsl(230, 85%, 85%);
+}
+
+[data-bs-theme='dark'] .badge-confirmed {
+  color: hsl(230, 85%, 84%);
+}
+
+[data-bs-theme='dark'] .badge-waiting,
+[data-bs-theme='dark'] .badge-pending {
+  border-color: hsla(45, 70%, 55%, 0.45);
+}
+
+[data-bs-theme='dark'] .badge-completed,
+[data-bs-theme='dark'] .badge-paid {
+  border-color: hsla(145, 50%, 50%, 0.45);
+}
+
+[data-bs-theme='dark'] .badge-cancelled {
+  border-color: hsla(4, 65%, 55%, 0.45);
+}
+
+[data-bs-theme='dark'] .badge-in_progress {
+  background-color: hsl(260, 14%, 18%);
+  color: hsl(260, 45%, 82%);
+  border-color: hsl(260, 12%, 28%);
+}
+
+[data-bs-theme='dark'] .btn-outline-primary,
+[data-bs-theme='dark'] .btn-outline-primary:hover,
+[data-bs-theme='dark'] .text-primary-600,
+[data-bs-theme='dark'] .text-primary-700 {
+  color: hsl(230, 85%, 84%);
+}
+
+[data-bs-theme='dark'] .agenda-slot-cell:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+}

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { ClinicProvider } from './context/ClinicContext';
 import { ToastProvider } from './context/ToastContext';
+import { ThemeProvider } from './context/ThemeContext';
 import { AppLayout } from './components/layout/AppLayout';
 import { DashboardView } from './views/DashboardView';
 import { SchedulingView } from './views/SchedulingView';
@@ -72,13 +73,15 @@ const ClinicApp: React.FC = () => {
 
 export const App: React.FC = () => {
   return (
-    <ToastProvider>
-      <ClinicProvider>
-        <BrowserRouter>
-          <ClinicApp />
-        </BrowserRouter>
-      </ClinicProvider>
-    </ToastProvider>
+    <ThemeProvider>
+      <ToastProvider>
+        <ClinicProvider>
+          <BrowserRouter>
+            <ClinicApp />
+          </BrowserRouter>
+        </ClinicProvider>
+      </ToastProvider>
+    </ThemeProvider>
   );
 };
 

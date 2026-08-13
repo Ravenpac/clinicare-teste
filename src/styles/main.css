@@ -2,6 +2,7 @@
 @import 'bootstrap-icons/font/bootstrap-icons.css';
 @import './variables.css';
 @import './custom-bootstrap.css';
+@import './dark-mode.css';
 
 .skip-link {
   position: absolute;

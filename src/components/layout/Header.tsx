@@ -1,8 +1,9 @@
 import React from 'react';
-import { Menu, Plus, Calendar, Clock, Lock } from 'lucide-react';
+import { Menu, Plus, Calendar, Clock, Lock, Sun, Moon } from 'lucide-react';
 import { formatDateExtensive } from '../../utils/formatters';
 import { getTodayDateString } from '../../utils/dateUtils';
 import { Button } from '../common/Button';
+import { useTheme } from '../../context/ThemeContext';
 
 interface HeaderProps {
   onOpenMobileMenu: () => void;
@@ -17,6 +18,7 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   const todayStr = getTodayDateString();
   const formattedToday = formatDateExtensive(todayStr);
+  const { isDark, toggleTheme } = useTheme();
 
   return (
     <header className="app-header" aria-label="Cabeçalho Principal">
@@ -40,6 +42,16 @@ export const Header: React.FC<HeaderProps> = ({
       </div>
 
       <div className="d-flex align-items-center gap-2">
+        <button
+          type="button"
+          className="btn btn-light btn-sm"
+          onClick={toggleTheme}
+          aria-label={isDark ? 'Ativar modo claro' : 'Ativar modo escuro'}
+          title={isDark ? 'Ativar modo claro' : 'Ativar modo escuro'}
+        >
+          {isDark ? <Sun size={15} aria-hidden="true" /> : <Moon size={15} aria-hidden="true" />}
+        </button>
+
         <Button
           variant="light"
           size="sm"

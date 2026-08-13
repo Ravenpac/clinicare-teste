@@ -7,10 +7,13 @@ import {
   X,
   Activity,
   RotateCcw,
+  Sun,
+  Moon,
 } from 'lucide-react';
 import { TabType } from './Sidebar';
 import { useClinic } from '../../context/ClinicContext';
 import { useToast } from '../../context/ToastContext';
+import { useTheme } from '../../context/ThemeContext';
 import { handleModalFocusTrap } from '../../utils/a11yUtils';
 
 interface MobileNavProps {
@@ -28,6 +31,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
 }) => {
   const { clinicInfo, resetDatabase } = useClinic();
   const { showInfo } = useToast();
+  const { isDark, toggleTheme } = useTheme();
   const drawerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -134,6 +138,10 @@ export const MobileNav: React.FC<MobileNavProps> = ({
         </nav>
 
         <div className="p-3 border-top bg-light">
+          <button type="button" className="btn btn-light btn-sm w-100 mb-2" onClick={toggleTheme}>
+            {isDark ? <Sun size={14} className="me-2" /> : <Moon size={14} className="me-2" />}
+            {isDark ? 'Modo Claro' : 'Modo Escuro'}
+          </button>
           <button
             type="button"
             className="btn btn-outline-secondary btn-sm w-100 mb-2"
