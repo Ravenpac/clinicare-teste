@@ -115,6 +115,7 @@ Acesse a aplicação em `http://localhost:3000`.
 ## 📜 Registro de Alterações
 
 ### v1.4 — Tema Escuro (Discord) + Toggle
+
 - Adicionado modo escuro com paleta neutra inspirada no Discord (`#313338`, `#383a40`, `#2b2d31`) via `data-bs-theme` do Bootstrap 5.3.
 - Novo `ThemeContext` (`src/context/ThemeContext.tsx`) com toggle no cabeçalho e no menu mobile; segue `prefers-color-scheme` no primeiro acesso e persiste em `localStorage`.
 - Script anti-flash no `index.html` aplica o tema antes da renderização.
@@ -122,17 +123,21 @@ Acesse a aplicação em `http://localhost:3000`.
 - Corrigidos utilitários inexistentes: `.grow`, `.text-primary-600`, `.text-primary-700`, `.bg-primary-50`.
 
 ### v1.3 — Regras de Negócio & Integridade
+
 - Cancelamento e transferência restringidos a consultas ativas (`scheduled | confirmed | waiting`) com guardas no contexto e ocultação dos botões.
 - Faturamento quitado (`paid`) bloqueia edição de valor, forma de pagamento e parcelas.
 - Badges de status com `role="status"` ganham elipse controlada (sem quebra de linha).
 
 ### v1.2 — Qualidade & Lint
+
 - Ajustes de acessibilidade (foco, `Escape`, handlers de teclado) e limpeza de código com ESLint 9 flat config e Prettier.
 - Correção do utilitário `.shrink-0` para colunas de ação fixas (ex.: check-in na Agenda do Dia).
 
 ### v1.1 — Fluxo de Atendimento
+
 - Check-in, chamada para atendimento, conclusão e detalhes a partir da Agenda do Dia.
 - Transferência de consulta com revalidação de conflitos de horário.
 
 ### v1.0 — Lançamento Inicial
+
 - Dashboard gerencial, agendamento com anti double-booking, lookup/histórico financeiro, diretório de pacientes e persistência local.
