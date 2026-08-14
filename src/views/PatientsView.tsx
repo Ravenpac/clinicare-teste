@@ -1,9 +1,10 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useRef } from 'react';
 import { useClinic } from '../context/ClinicContext';
 import { useToast } from '../context/ToastContext';
 import { Patient, HealthInsuranceType } from '../types/patient';
 import { formatCPF, formatPhone, formatDateBR, calculateAge } from '../utils/formatters';
-import { isValidCPF, isValidPhone, isValidBirthDate } from '../utils/validators';
+import { isValidCPF, isValidPhone, isValidBirthDate, isValidCEP } from '../utils/validators';
+import { fetchAddressByCep } from '../services/cepService';
 import { EmptyState } from '../components/common/EmptyState';
 import { Modal } from '../components/common/Modal';
 import { Button } from '../components/common/Button';
@@ -35,6 +36,8 @@ export const PatientsView: React.FC = () => {
   const [insuranceNumber, setInsuranceNumber] = useState('');
   const [notes, setNotes] = useState('');
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isCepLoading, setIsCepLoading] = useState(false);
+  const cepRequestIdRef = useRef(0);
 
   const filteredPatients = useMemo(() => {
     if (!searchQuery.trim()) return patients;
@@ -151,6 +154,36 @@ export const PatientsView: React.FC = () => {
     }
 
     setIsModalOpen(false);
+  };
+
+  const handleCepChange = async (val: string) => {
+    setCep(val);
+
+    if (!isValidCEP(val)) {
+      cepRequestIdRef.current += 1;
+      setIsCepLoading(false);
+      return;
+    }
+
+    const requestId = ++cepRequestIdRef.current;
+    setIsCepLoading(true);
+    const address = await fetchAddressByCep(val);
+
+    if (requestId !== cepRequestIdRef.current) return;
+
+    setIsCepLoading(false);
+
+    if (address) {
+      setStreet(address.street);
+      setNeighborhood(address.neighborhood);
+      setCity(address.city || 'São Paulo');
+      setState(address.state || 'SP');
+    } else {
+      showError(
+        'Não foi possível localizar o endereço para este CEP. Verifique o número e tente novamente.',
+        'CEP Não Encontrado'
+      );
+    }
   };
 
   return (
@@ -405,12 +438,25 @@ export const PatientsView: React.FC = () => {
             </div>
 
             <div className="col-12 col-md-3">
-              <FormField id="cad-patient-cep" label="CEP">
+              <FormField
+                id="cad-patient-cep"
+                label="CEP"
+                hint={isCepLoading ? 'Buscando endereço...' : undefined}
+                trailing={
+                  isCepLoading ? (
+                    <div
+                      className="spinner-border spinner-border-sm text-primary"
+                      role="status"
+                      aria-hidden="true"
+                    />
+                  ) : undefined
+                }
+              >
                 <MaskedInput
                   mask="cep"
                   placeholder="00000-000"
                   value={cep}
-                  onChange={(val) => setCep(val)}
+                  onChange={handleCepChange}
                 />
               </FormField>
             </div>

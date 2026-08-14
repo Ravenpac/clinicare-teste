@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useClinic } from '../../context/ClinicContext';
 import { useToast } from '../../context/ToastContext';
 import { Modal } from '../common/Modal';
 import { Button } from '../common/Button';
 import { FormField } from '../form/FormField';
 import { MaskedInput } from '../form/MaskedInput';
-import { isValidCPF, isValidPhone, isValidBirthDate } from '../../utils/validators';
+import { isValidCPF, isValidPhone, isValidBirthDate, isValidCEP } from '../../utils/validators';
+import { fetchAddressByCep } from '../../services/cepService';
 import { calculateAge } from '../../utils/formatters';
 import { calculateEndTime, getTodayDateString } from '../../utils/dateUtils';
 import { AppointmentType } from '../../types/appointment';
@@ -64,6 +65,8 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
 
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [conflictWarning, setConflictWarning] = useState<string | null>(null);
+  const [isCepLoading, setIsCepLoading] = useState(false);
+  const cepRequestIdRef = useRef(0);
 
   useEffect(() => {
     if (isOpen) {
@@ -92,6 +95,8 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
   }, [isOpen, initialDoctorId, initialDate, initialTime, doctors]);
 
   const resetPatientFields = () => {
+    cepRequestIdRef.current += 1;
+    setIsCepLoading(false);
     setSelectedPatientId('');
     setFullName('');
     setCpf('');
@@ -150,6 +155,36 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
         setInsuranceNumber(existing.insuranceNumber || '');
         showSuccess(`Paciente cadastrado localizado: ${existing.fullName}`, 'Cadastro Encontrado');
       }
+    }
+  };
+
+  const handleCepChange = async (val: string) => {
+    setCep(val);
+
+    if (!isValidCEP(val)) {
+      cepRequestIdRef.current += 1;
+      setIsCepLoading(false);
+      return;
+    }
+
+    const requestId = ++cepRequestIdRef.current;
+    setIsCepLoading(true);
+    const address = await fetchAddressByCep(val);
+
+    if (requestId !== cepRequestIdRef.current) return;
+
+    setIsCepLoading(false);
+
+    if (address) {
+      setStreet(address.street);
+      setNeighborhood(address.neighborhood);
+      setCity(address.city || 'São Paulo');
+      setState(address.state || 'SP');
+    } else {
+      showError(
+        'Não foi possível localizar o endereço para este CEP. Verifique o número e tente novamente.',
+        'CEP Não Encontrado'
+      );
     }
   };
 
@@ -645,12 +680,25 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
             </div>
 
             <div className="col-12 col-md-3">
-              <FormField id="patient-cep" label="CEP">
+              <FormField
+                id="patient-cep"
+                label="CEP"
+                hint={isCepLoading ? 'Buscando endereço...' : undefined}
+                trailing={
+                  isCepLoading ? (
+                    <div
+                      className="spinner-border spinner-border-sm text-primary"
+                      role="status"
+                      aria-hidden="true"
+                    />
+                  ) : undefined
+                }
+              >
                 <MaskedInput
                   mask="cep"
                   placeholder="00000-000"
                   value={cep}
-                  onChange={(val) => setCep(val)}
+                  onChange={handleCepChange}
                 />
               </FormField>
             </div>

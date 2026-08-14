@@ -6,6 +6,7 @@ export interface FormFieldProps {
   required?: boolean;
   error?: string;
   hint?: string;
+  trailing?: React.ReactNode;
   children: React.ReactElement;
   className?: string;
 }
@@ -16,6 +17,7 @@ export const FormField: React.FC<FormFieldProps> = ({
   required = false,
   error,
   hint,
+  trailing,
   children,
   className = 'mb-3',
 }) => {
@@ -29,7 +31,9 @@ export const FormField: React.FC<FormFieldProps> = ({
     'aria-required': required ? 'true' : undefined,
     'aria-invalid': error ? 'true' : undefined,
     'aria-describedby': describedBy || undefined,
-    className: `${children.props.className || ''} ${error ? 'is-invalid' : ''}`.trim(),
+    className: `${children.props.className || ''} ${error ? 'is-invalid' : ''} ${
+      trailing ? 'pe-5' : ''
+    }`.trim(),
   });
 
   return (
@@ -46,7 +50,17 @@ export const FormField: React.FC<FormFieldProps> = ({
         {required && <span className="visually-hidden">(campo obrigatório)</span>}
       </label>
 
-      {clonedChild}
+      <div className="position-relative">
+        {clonedChild}
+        {trailing && (
+          <div
+            className="position-absolute top-50 end-0 translate-middle-y d-flex align-items-center"
+            style={{ insetInlineEnd: '0.875rem' }}
+          >
+            {trailing}
+          </div>
+        )}
+      </div>
 
       {hint && !error && (
         <div id={hintId} className="form-text text-muted small mt-1">
