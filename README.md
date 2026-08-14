@@ -87,7 +87,7 @@ Acesse a aplicação em `http://localhost:3000`.
 
 | Dispositivo | Largura        | Adaptação na Interface                                                                                                                                                                         |
 | ----------- | -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Desktop** | ≥ 1200px       | Sidebar persistente, grid de 4 colunas de métricas, agenda com médicos lado a lado e tabela de dados completa.                                                                                 |
+| **Desktop** | ≥ 1200px       | Sidebar persistente, métricas do dashboard em 2 colunas (4 colunas a partir de 1400px), agenda com médicos lado a lado e tabela de dados completa. |
 | **Tablet**  | 768px a 1199px | Sidebar colapsada, dashboard em grid de 2 colunas, agenda com rolagem horizontal suave e tabela prioritária.                                                                                   |
 | **Mobile**  | < 768px        | Menu gaveta (_Offcanvas_ acessível), dashboard em coluna única, agenda convertida automaticamente em timeline vertical e tabela refatorada em cards responsivos com botões de toque adequados. |
 

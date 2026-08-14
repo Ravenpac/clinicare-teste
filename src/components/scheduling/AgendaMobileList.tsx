@@ -54,8 +54,10 @@ export const AgendaMobileList: React.FC<AgendaMobileListProps> = ({
         <Button
           variant="primary"
           size="sm"
+          className="btn-icon-on-mobile"
           onClick={onOpenNewAppointmentModal}
           leftIcon={<Plus size={14} />}
+          aria-label="Novo Agendamento"
         >
           Novo Agendamento
         </Button>

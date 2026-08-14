@@ -32,7 +32,7 @@ export const Button: React.FC<ButtonProps> = ({
       {isLoading ? (
         <>
           <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true" />
-          <span>Carregando...</span>
+          <span className="btn-label">Carregando...</span>
         </>
       ) : (
         <>
@@ -41,7 +41,7 @@ export const Button: React.FC<ButtonProps> = ({
               {leftIcon}
             </span>
           )}
-          {children}
+          <span className="btn-label">{children}</span>
           {rightIcon && (
             <span className="d-inline-flex" aria-hidden="true">
               {rightIcon}

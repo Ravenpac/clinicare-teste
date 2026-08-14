@@ -86,9 +86,10 @@ export const AppointmentMobileCardList: React.FC<AppointmentMobileCardListProps>
             <Button
               variant="outline-primary"
               size="sm"
-              className="grow"
+              className="grow btn-icon-on-mobile"
               onClick={() => onViewDetails(apt)}
               leftIcon={<Eye size={14} />}
+              aria-label={`Ver detalhes da consulta de ${apt.patientName}`}
             >
               Detalhes
             </Button>
@@ -96,9 +97,11 @@ export const AppointmentMobileCardList: React.FC<AppointmentMobileCardListProps>
             <Button
               variant="light"
               size="sm"
+              className="btn-icon-on-mobile"
               onClick={() => onEditBilling(apt)}
               leftIcon={<CreditCard size={14} />}
               title="Gerenciar Faturamento"
+              aria-label={`Gerenciar faturamento da consulta de ${apt.patientName}`}
             >
               Faturamento
             </Button>
@@ -107,9 +110,11 @@ export const AppointmentMobileCardList: React.FC<AppointmentMobileCardListProps>
               <Button
                 variant="light"
                 size="sm"
+                className="btn-icon-on-mobile"
                 onClick={() => onTransfer(apt)}
                 leftIcon={<ArrowRightLeft size={14} />}
                 title="Transferir Consulta"
+                aria-label={`Transferir consulta de ${apt.patientName}`}
               >
                 Transferir
               </Button>
@@ -119,9 +124,11 @@ export const AppointmentMobileCardList: React.FC<AppointmentMobileCardListProps>
               <Button
                 variant="danger"
                 size="sm"
+                className="btn-icon-on-mobile"
                 onClick={() => onCancel(apt)}
                 leftIcon={<XCircle size={14} />}
                 title="Cancelar Consulta"
+                aria-label={`Cancelar consulta de ${apt.patientName}`}
               >
                 Cancelar
               </Button>

@@ -190,9 +190,11 @@ export const TodayScheduleList: React.FC<TodayScheduleListProps> = ({
                       <Button
                         variant="primary"
                         size="sm"
+                        className="btn-icon-on-mobile"
                         onClick={(e) => handleCheckIn(apt, e)}
                         leftIcon={<UserCheck size={14} />}
                         title="Registrar chegada do paciente"
+                        aria-label={`Fazer check-in de ${apt.patientName}`}
                       >
                         Check-in
                       </Button>
@@ -202,9 +204,11 @@ export const TodayScheduleList: React.FC<TodayScheduleListProps> = ({
                       <Button
                         variant="success"
                         size="sm"
+                        className="btn-icon-on-mobile"
                         onClick={(e) => handleStartConsultation(apt, e)}
                         leftIcon={<ArrowRight size={14} />}
                         title="Encaminhar para a sala do médico"
+                        aria-label={`Iniciar atendimento de ${apt.patientName}`}
                       >
                         Atender
                       </Button>
@@ -214,9 +218,11 @@ export const TodayScheduleList: React.FC<TodayScheduleListProps> = ({
                       <Button
                         variant="outline-primary"
                         size="sm"
+                        className="btn-icon-on-mobile"
                         onClick={(e) => handleComplete(apt, e)}
                         leftIcon={<UserCheck size={14} />}
                         title="Finalizar atendimento"
+                        aria-label={`Concluir atendimento de ${apt.patientName}`}
                       >
                         Concluir
                       </Button>

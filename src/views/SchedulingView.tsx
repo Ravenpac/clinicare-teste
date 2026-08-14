@@ -97,20 +97,24 @@ export const SchedulingView: React.FC<SchedulingViewProps> = ({
             <Button
               variant="outline-primary"
               size="sm"
+              className="btn-icon-on-mobile"
               onClick={onOpenBlockTimeModal}
               leftIcon={<Lock size={14} />}
               title="Bloquear período de médico"
+              aria-label="Bloquear Horário"
             >
-              <span className="d-none d-md-inline">Bloquear Horário</span>
+              Bloquear Horário
             </Button>
 
             <Button
               variant="primary"
               size="sm"
+              className="btn-icon-on-mobile"
               onClick={onOpenNewAppointmentModal}
               leftIcon={<Plus size={16} />}
+              aria-label="Novo Agendamento"
             >
-              <span className="d-none d-sm-inline">Novo</span> Agendamento
+              Novo Agendamento
             </Button>
           </div>
         </div>

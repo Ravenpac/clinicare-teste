@@ -15,7 +15,7 @@ export const MetricsOverview: React.FC = () => {
   return (
     <section aria-label="Indicadores do Dia" className="mb-4">
       <div className="row g-3">
-        <div className="col-12 col-sm-6 col-xl-3">
+        <div className="col-12 col-sm-6 col-xxl-3">
           <StatCard
             title="Agendamentos do Dia"
             value={metrics.todayAppointmentsCount}
@@ -28,7 +28,7 @@ export const MetricsOverview: React.FC = () => {
           />
         </div>
 
-        <div className="col-12 col-sm-6 col-xl-3">
+        <div className="col-12 col-sm-6 col-xxl-3">
           <StatCard
             title="Pacientes Atendidos"
             value={`${metrics.todayCompletedCount} / ${metrics.todayAppointmentsCount}`}
@@ -41,7 +41,7 @@ export const MetricsOverview: React.FC = () => {
           />
         </div>
 
-        <div className="col-12 col-sm-6 col-xl-3">
+        <div className="col-12 col-sm-6 col-xxl-3">
           <StatCard
             title="Faturamento do Dia"
             value={formatCurrency(metrics.todayRevenue)}
@@ -54,7 +54,7 @@ export const MetricsOverview: React.FC = () => {
           />
         </div>
 
-        <div className="col-12 col-sm-6 col-xl-3">
+        <div className="col-12 col-sm-6 col-xxl-3">
           <StatCard
             title="Profissionais Ativos"
             value={`${metrics.activeDoctorsCount} Médicos`}

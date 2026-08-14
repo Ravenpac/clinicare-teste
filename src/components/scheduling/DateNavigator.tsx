@@ -1,7 +1,8 @@
 import React from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { formatDateExtensive } from '../../utils/formatters';
+import { formatDateBR, formatDateExtensive } from '../../utils/formatters';
 import { addDays, getTodayDateString } from '../../utils/dateUtils';
+import { useResponsiveBreakpoints } from '../../hooks/useMediaQuery';
 
 interface DateNavigatorProps {
   selectedDate: string;
@@ -11,6 +12,7 @@ interface DateNavigatorProps {
 export const DateNavigator: React.FC<DateNavigatorProps> = ({ selectedDate, onDateChange }) => {
   const today = getTodayDateString();
   const isToday = selectedDate === today;
+  const { isMobile } = useResponsiveBreakpoints();
 
   const handlePrevDay = () => {
     onDateChange(addDays(selectedDate, -1));
@@ -71,8 +73,8 @@ export const DateNavigator: React.FC<DateNavigatorProps> = ({ selectedDate, onDa
             if (e.target.value) onDateChange(e.target.value);
           }}
         />
-        <span className="fw-semibold text-dark text-capitalize small d-none d-md-inline">
-          {formatDateExtensive(selectedDate)}
+        <span className="fw-semibold text-dark text-capitalize small">
+          {isMobile ? formatDateBR(selectedDate) : formatDateExtensive(selectedDate)}
         </span>
       </div>
     </div>

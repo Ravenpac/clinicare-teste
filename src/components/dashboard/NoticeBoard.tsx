@@ -67,8 +67,10 @@ export const NoticeBoard: React.FC = () => {
           <Button
             variant="outline-primary"
             size="sm"
+            className="btn-icon-on-mobile"
             onClick={() => setIsModalOpen(true)}
             leftIcon={<Plus size={14} />}
+            aria-label="Novo Aviso"
           >
             Novo Aviso
           </Button>

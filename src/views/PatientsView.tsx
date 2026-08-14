@@ -166,8 +166,10 @@ export const PatientsView: React.FC = () => {
         <Button
           variant="primary"
           size="sm"
+          className="btn-icon-on-mobile"
           onClick={handleOpenNew}
           leftIcon={<UserPlus size={16} />}
+          aria-label="Cadastrar Paciente"
         >
           Cadastrar Paciente
         </Button>

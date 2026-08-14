@@ -166,8 +166,10 @@ export const LookupView: React.FC<LookupViewProps> = ({ onOpenNewAppointmentModa
           <Button
             variant="light"
             size="sm"
+            className="btn-icon-on-mobile"
             onClick={handleExportSimulated}
             leftIcon={<FileSpreadsheet size={16} />}
+            aria-label="Exportar Relatório"
           >
             Exportar Relatório
           </Button>
@@ -175,8 +177,10 @@ export const LookupView: React.FC<LookupViewProps> = ({ onOpenNewAppointmentModa
           <Button
             variant="primary"
             size="sm"
+            className="btn-icon-on-mobile"
             onClick={onOpenNewAppointmentModal}
             leftIcon={<Plus size={16} />}
+            aria-label="Novo Agendamento"
           >
             Novo Agendamento
           </Button>

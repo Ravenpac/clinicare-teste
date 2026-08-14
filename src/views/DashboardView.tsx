@@ -65,8 +65,10 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           <Button
             variant="outline-primary"
             size="sm"
+            className="btn-icon-on-mobile"
             onClick={onNavigateToScheduling}
             leftIcon={<CalendarCheck size={16} />}
+            aria-label="Ver Agenda Completa"
           >
             Ver Agenda Completa
           </Button>
@@ -74,8 +76,10 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           <Button
             variant="primary"
             size="sm"
+            className="btn-icon-on-mobile"
             onClick={onOpenNewAppointmentModal}
             leftIcon={<Plus size={16} />}
+            aria-label="Novo Agendamento"
           >
             Novo Agendamento
           </Button>

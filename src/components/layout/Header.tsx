@@ -1,9 +1,10 @@
 import React from 'react';
 import { Menu, Plus, Calendar, Clock, Lock, Sun, Moon } from 'lucide-react';
-import { formatDateExtensive } from '../../utils/formatters';
+import { formatDateBR, formatDateExtensive } from '../../utils/formatters';
 import { getTodayDateString } from '../../utils/dateUtils';
 import { Button } from '../common/Button';
 import { useTheme } from '../../context/ThemeContext';
+import { useResponsiveBreakpoints } from '../../hooks/useMediaQuery';
 
 interface HeaderProps {
   onOpenMobileMenu: () => void;
@@ -17,7 +18,8 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenBlockTimeModal,
 }) => {
   const todayStr = getTodayDateString();
-  const formattedToday = formatDateExtensive(todayStr);
+  const { isMobile } = useResponsiveBreakpoints();
+  const formattedToday = isMobile ? formatDateBR(todayStr) : formatDateExtensive(todayStr);
   const { isDark, toggleTheme } = useTheme();
 
   return (
@@ -65,10 +67,12 @@ export const Header: React.FC<HeaderProps> = ({
         <Button
           variant="primary"
           size="sm"
+          className="btn-icon-on-mobile"
           onClick={onOpenNewAppointmentModal}
           leftIcon={<Plus size={16} />}
+          aria-label="Novo Agendamento"
         >
-          <span className="d-none d-sm-inline">Novo</span> Agendamento
+          Novo Agendamento
         </Button>
       </div>
     </header>
